@@ -9,43 +9,31 @@ $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "NetIPAddress"
-$json = Get-NetIPAddress | ConvertTo-Json
+$json = Get-NetIPAddress
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Package"
-$json = Get-Package | ConvertTo-Json
+$json = Get-Package
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Printer"
-$json = Get-printer | ConvertTo-Json
+$json = Get-printer
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "FileShare"
-$json = Get-FileShare | ConvertTo-Json
+$json = Get-FileShare
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Volume"
-$json = Get-Volume | ConvertTo-Json
-$json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
-Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
-
-$LogType = "Disk"
-$json = Get-Disk | ConvertTo-Json
-$json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
-Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
-
-$LogType = "Physicaldisk"
-$json = get-physicaldisk | ConvertTo-Json
+$json = Get-Volume
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
