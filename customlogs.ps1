@@ -27,9 +27,9 @@ Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $js
 
 <#$LogType = "Disk"
 $json = Get-Disk | ConvertTo-Json
-Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType#>
+Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Physicaldisk"
 $json = get-physicaldisk | ConvertTo-Json
-Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
+Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType#>
 
