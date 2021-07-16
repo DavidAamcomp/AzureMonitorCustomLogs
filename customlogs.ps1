@@ -25,9 +25,9 @@ $LogType = "Volume"
 $json = Get-Volume | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
-$LogType = "Disk"
+<#$LogType = "Disk"
 $json = Get-Disk | ConvertTo-Json
-Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
+Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType#>
 
 $LogType = "Physicaldisk"
 $json = get-physicaldisk | ConvertTo-Json
