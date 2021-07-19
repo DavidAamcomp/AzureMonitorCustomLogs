@@ -1,3 +1,15 @@
+<#Save as c:/log/customlogs.ps1
+change powershell to Set-ExecutionPolicy Unrestricted
+Add to task scheduler
+
+custonmlogs.ps1 = 
+
+$ScriptFromGitHub = Invoke-WebRequest https://raw.githubusercontent.com/DavidAamcomp/AzureMonitorCustomLogs/main/customlogs.ps1
+Invoke-Expression $($ScriptFromGitHub.Content)
+
+#>
+
+
 $customerId = "7320bb57-0820-4ead-979f-64ffa292ed8e"
 $SharedKey = "9xETLQiAyPcuYE7LYrXf0uAEoMVhv6qLB0FWQqpGZDJdQK9H5x1s48r8VBOivgfZUB939avsgiPT+UmaQ9AlMw=="
 $hostname = hostname
