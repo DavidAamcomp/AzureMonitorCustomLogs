@@ -4,6 +4,7 @@ Add to task scheduler, run at midnight and system startup
 
 custonmlogs.ps1 = 
 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $ScriptFromGitHub = Invoke-WebRequest https://raw.githubusercontent.com/DavidAamcomp/AzureMonitorCustomLogs/main/customlogs.ps1
 Invoke-Expression $($ScriptFromGitHub.Content)
 
