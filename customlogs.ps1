@@ -1,5 +1,6 @@
 <#Save as c:/log/customlogs.ps1
 powershellcommands
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Set-ExecutionPolicy Unrestricted
     Install-Module -Name OMSIngestionAPI
 Add to task scheduler, run at midnight and system startup
@@ -11,7 +12,6 @@ $ScriptFromGitHub = Invoke-WebRequest https://raw.githubusercontent.com/DavidAam
 Invoke-Expression $($ScriptFromGitHub.Content)
 
 #>
-
 
 $customerId = "7320bb57-0820-4ead-979f-64ffa292ed8e"
 $SharedKey = "9xETLQiAyPcuYE7LYrXf0uAEoMVhv6qLB0FWQqpGZDJdQK9H5x1s48r8VBOivgfZUB939avsgiPT+UmaQ9AlMw=="
