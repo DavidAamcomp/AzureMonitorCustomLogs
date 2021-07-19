@@ -1,5 +1,7 @@
 <#Save as c:/log/customlogs.ps1
-change powershell to Set-ExecutionPolicy Unrestricted
+powershellcommands
+    Set-ExecutionPolicy Unrestricted
+    Install-Module -Name OMSIngestionAPI
 Add to task scheduler, run at midnight and system startup
 
 custonmlogs.ps1 = 
