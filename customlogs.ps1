@@ -1,6 +1,6 @@
 <#Save as c:/log/customlogs.ps1
 change powershell to Set-ExecutionPolicy Unrestricted
-Add to task scheduler
+Add to task scheduler, run at midnight and system startup
 
 custonmlogs.ps1 = 
 
