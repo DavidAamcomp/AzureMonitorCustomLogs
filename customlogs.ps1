@@ -52,3 +52,36 @@ $json = Get-Volume
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Json
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
+
+$LogType = "IPScan"
+$dir=get-location
+Set-Location C:\log | Out-Null
+git clone https://github.com/BornToBeRoot/PowerShell_IPv4NetworkScanner.git | Out-Null
+Set-Location c:\log\PowerShell_IPv4NetworkScanner\ | Out-Null
+git pull | Out-Null
+$IP=Get-NetIPConfiguration
+$IP = $IP.ipv4address.ipaddress
+
+$file = 'C:\log\PowerShell_IPv4NetworkScanner\Scripts\Resources\oui.txt'
+
+
+if (-not(Test-Path -Path $file -PathType Leaf)) {
+     try {
+         $null = New-Item -ItemType File -Path $file -Force -ErrorAction Stop
+         C:\log\PowerShell_IPv4NetworkScanner\Scripts\Create-OUIListFromWeb.ps1
+     }
+     catch {
+         throw $_.Exception.Message
+     }
+ }
+
+ else {
+
+$json = C:\log\PowerShell_IPv4NetworkScanner\Scripts\IPv4NetworkScan.ps1 -ipv4address $IP[0] -cidr 24 -EnableMACResolving
+$json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
+$json = $json | ConvertTo-Json
+Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
+Set-Location $dir
+ }
+ 
+ 
