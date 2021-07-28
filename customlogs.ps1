@@ -13,6 +13,7 @@ Invoke-Expression $($ScriptFromGitHub.Content)
 
 #>
 
+
 $customerId = "7320bb57-0820-4ead-979f-64ffa292ed8e"
 $SharedKey = "9xETLQiAyPcuYE7LYrXf0uAEoMVhv6qLB0FWQqpGZDJdQK9H5x1s48r8VBOivgfZUB939avsgiPT+UmaQ9AlMw=="
 $hostname = hostname
@@ -70,8 +71,8 @@ if (-not(Test-Path -Path $file -PathType Leaf)) {
  }
 
  else {
-Set-Location c:\log\PowerShell_IPv4NetworkScanner\ | Out-Null
-git pull | Out-Null
+Set-Location c:\log\PowerShell_IPv4NetworkScanner\
+git pull
 $json = C:\log\PowerShell_IPv4NetworkScanner\Scripts\IPv4NetworkScan.ps1 -ipv4address $IP[0] -cidr 24 -EnableMACResolving
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
 $json = $json | ConvertTo-Csv | ConvertFrom-Csv | ConvertTo-Json
