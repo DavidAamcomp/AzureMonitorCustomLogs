@@ -70,8 +70,6 @@ if (-not(Test-Path -Path $file -PathType Leaf)) {
  }
 
  else {
-Set-Location C:\log | Out-Null
-git pull | Out-Null
 Set-Location c:\log\PowerShell_IPv4NetworkScanner\ | Out-Null
 git pull | Out-Null
 $json = C:\log\PowerShell_IPv4NetworkScanner\Scripts\IPv4NetworkScan.ps1 -ipv4address $IP[0] -cidr 24 -EnableMACResolving
