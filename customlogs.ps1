@@ -21,37 +21,37 @@ $hostname = hostname
 $LogType = "ComputerInfo"
 $json = Get-ComputerInfo 
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
+$json = $json | ConvertTo-Json -depth 10
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "NetIPAddress"
 $json = Get-NetIPAddress
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
+$json = $json | ConvertTo-Json -depth 10
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Package"
 $json = Get-Package
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
+$json = $json | ConvertTo-Json -depth 10
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Printer"
 $json = Get-printer
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
+$json = $json | ConvertTo-Json -depth 10
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "FileShare"
 $json = Get-FileShare
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
+$json = $json | ConvertTo-Json -depth 10
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "Volume"
 $json = Get-Volume
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Json
+$json = $json | ConvertTo-Json -depth 10
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 
 $LogType = "IPScan"
@@ -75,7 +75,7 @@ Set-Location c:\log\PowerShell_IPv4NetworkScanner\
 git pull
 $json = C:\log\PowerShell_IPv4NetworkScanner\Scripts\IPv4NetworkScan.ps1 -ipv4address $IP[0] -cidr 24 -EnableMACResolving
 $json | Add-Member -MemberType NoteProperty -Name "Computer" -Value $hostname
-$json = $json | ConvertTo-Csv | ConvertFrom-Csv | ConvertTo-Json
+$json = $json | ConvertTo-Csv | ConvertFrom-Csv | ConvertTo-Json 
 Send-OMSAPIIngestionFile -customerId $customerId -sharedKey $SharedKey -body $json -logType $LogType
 Set-Location $dir
  }
